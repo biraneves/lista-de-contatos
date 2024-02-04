@@ -2,10 +2,20 @@ import { Campo } from '../../styles';
 import FiltersList from '../FiltersList';
 import { Aside } from './styles';
 
-const SideBar = () => (
+type Props = {
+    showFilters?: boolean;
+};
+
+const SideBar = ({ showFilters }: Props) => (
     <Aside>
-        <Campo type="text" placeholder="Buscar" />
-        <FiltersList />
+        {showFilters ? (
+            <>
+                <Campo type="text" placeholder="Buscar" />
+                <FiltersList />
+            </>
+        ) : (
+            <h3>Mostrar botão de retorno</h3>
+        )}
     </Aside>
 );
 

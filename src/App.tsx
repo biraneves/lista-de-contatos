@@ -1,9 +1,21 @@
 import { Provider } from 'react-redux';
-import ContactsArea from './containers/ContactsArea';
 import GeneralHeader from './containers/GeneralHeader';
-import SideBar from './containers/SideBar';
 import EstiloGlobal, { Container } from './styles';
 import store from './store';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from './pages/Home';
+import AddContact from './pages/AddContact';
+
+const routes = createBrowserRouter([
+    {
+        path: '/',
+        element: <Home />,
+    },
+    {
+        path: '/new',
+        element: <AddContact />,
+    },
+]);
 
 function App() {
     return (
@@ -11,8 +23,7 @@ function App() {
             <EstiloGlobal />
             <GeneralHeader />
             <Container>
-                <SideBar />
-                <ContactsArea />
+                <RouterProvider router={routes} />
             </Container>
         </Provider>
     );
