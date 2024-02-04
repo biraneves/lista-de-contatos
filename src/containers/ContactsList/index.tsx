@@ -5,13 +5,21 @@ import { useSelector } from 'react-redux';
 
 const ContactsList = () => {
     const { items } = useSelector((state: RootReducer) => state.contacts);
-    const { category } = useSelector((state: RootReducer) => state.filter);
+    const { search, category } = useSelector((state: RootReducer) => state.filter);
 
     const filterContacts = () => {
         let filteredContacts = items;
 
-        if (category !== 'todos') {
-            filteredContacts = items.filter(contact => contact.category === category);
+        if (search !== undefined) {
+            filteredContacts = filteredContacts.filter(
+                contact => contact.name.toLowerCase().search(search.toLowerCase()) >= 0
+            );
+
+            if (category !== 'todos') {
+                filteredContacts = filteredContacts.filter(contact => contact.category === category);
+                return filteredContacts;
+            }
+
             return filteredContacts;
         }
 
