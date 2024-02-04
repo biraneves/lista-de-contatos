@@ -1,14 +1,17 @@
 import FilterCard from '../../components/FilterCard';
 import { FilterList } from './styles';
+import { Category } from '../../utils/enums/Contact';
 
-const FiltersList = () => (
-    <FilterList>
-        <FilterCard quantity={2} category="família" />
-        <FilterCard quantity={1} category="amigos" />
-        <FilterCard quantity={1} category="trabalho" />
-        <FilterCard quantity={1} category="sem categoria" />
-        <FilterCard active quantity={5} category="todos" />
-    </FilterList>
-);
+const FiltersList = () => {
+    return (
+        <FilterList>
+            <FilterCard category={Category.FAMILY} />
+            <FilterCard category={Category.FRIENDS} />
+            <FilterCard category={Category.WORK} />
+            <FilterCard category={Category.NO_CATEGORY} />
+            <FilterCard category="todos" />
+        </FilterList>
+    );
+};
 
 export default FiltersList;
