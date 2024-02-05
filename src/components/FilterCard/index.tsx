@@ -3,6 +3,7 @@ import { Category } from '../../utils/enums/Contact';
 import { Card, CardCategory, CardQuantity } from './styles';
 import { RootReducer } from '../../store';
 import { changeFilter } from '../../store/reducers/filter';
+import { toggle } from '../../store/reducers/sidebar';
 
 export type FilterCardProps = {
     category: Category | 'todos';
@@ -24,6 +25,8 @@ const FilterCard = ({ category }: FilterCardProps) => {
 
     const doFilter = () => {
         dispatch(changeFilter({ category }));
+
+        if (window.innerWidth <= 767) dispatch(toggle(false));
     };
 
     return (

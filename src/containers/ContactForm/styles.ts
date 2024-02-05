@@ -18,7 +18,7 @@ export const Options = styled.div`
 `;
 
 export const Option = styled.div`
-    display: inline;
+    display: inline-block;
     text-transform: capitalize;
 
     input {
@@ -28,5 +28,9 @@ export const Option = styled.div`
     label {
         margin-right: 16px;
         font-weight: 400;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 8px;
     }
 `;

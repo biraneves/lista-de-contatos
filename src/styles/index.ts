@@ -18,6 +18,10 @@ export const Container = styled.div`
     margin: 0 auto;
     display: grid;
     grid-template-columns: 224px auto;
+
+    @media screen and (max-width: 767px) {
+        grid-template-columns: auto;
+    }
 `;
 
 export const MainContainer = styled.main`
@@ -36,6 +40,12 @@ export const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: start;
+
+    @media screen and (max-width: 767px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 `;
 
 export const Field = styled.input`

@@ -72,7 +72,7 @@ export const ContactInfos = styled.div`
 `;
 
 export const ContactInfo = styled.span<ContactInfoProps>`
-    display: inline-block;
+    display: block;
     line-height: 32px;
     max-width: 190px;
     overflow-x: hidden;

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ActionButtonSave, Field, MainContainer, Title } from '../../styles';
+import { ActionButtonDanger, ActionButtonSave, Field, MainContainer, Title } from '../../styles';
 import { Category } from '../../utils/enums/Contact';
 import { Form, Option, Options } from './styles';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -51,6 +51,10 @@ const ContactForm = ({ contactId }: Props) => {
         navigate('/');
     };
 
+    const cancel = () => {
+        navigate('/');
+    };
+
     return (
         <MainContainer>
             <Title>Novo contato</Title>
@@ -76,6 +80,7 @@ const ContactForm = ({ contactId }: Props) => {
                 <Field value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="E-mail" />
                 <Field value={phone} onChange={e => setPhone(e.target.value)} type="tel" placeholder="Phone" />
                 <ActionButtonSave type="submit">Cadastrar</ActionButtonSave>
+                {window.innerWidth <= 767 ? <ActionButtonDanger onClick={cancel}>Cancelar</ActionButtonDanger> : <></>}
             </Form>
         </MainContainer>
     );
