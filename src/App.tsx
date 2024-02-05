@@ -5,6 +5,7 @@ import store from './store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import AddContact from './pages/AddContact';
+import EditContact from './pages/EditContact';
 
 const routes = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const routes = createBrowserRouter([
     {
         path: '/new',
         element: <AddContact />,
+    },
+    {
+        path: '/edit/:contactId',
+        element: <EditContact />,
     },
 ]);
 

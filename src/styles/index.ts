@@ -38,7 +38,7 @@ export const HeaderContainer = styled.div`
     justify-content: start;
 `;
 
-export const Campo = styled.input`
+export const Field = styled.input`
     width: 100%;
     padding: 8px;
     border: solid 1px ${vars.primaryColor};
@@ -64,6 +64,16 @@ export const ActionButton = styled.button`
 
 export const ActionButtonDanger = styled(ActionButton)`
     background-color: ${vars.red};
+`;
+
+export const ActionButtonSave = styled(ActionButton)`
+    background-color: ${vars.green};
+`;
+
+export const Title = styled.h2`
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
 `;
 
 export default EstiloGlobal;

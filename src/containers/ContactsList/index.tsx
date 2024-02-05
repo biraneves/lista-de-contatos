@@ -1,5 +1,5 @@
 import Contact from '../../components/Contact';
-import { ContactCardsList } from './styles';
+import { ContactCardsList, ContactsInfo } from './styles';
 import { RootReducer } from '../../store';
 import { useSelector } from 'react-redux';
 
@@ -26,21 +26,36 @@ const ContactsList = () => {
         return items;
     };
 
+    const showFilterResults = (quantity: number) => {
+        let beginMessage = '';
+
+        if (quantity === 0) {
+            beginMessage = 'Não foram encontrados contatos';
+        } else {
+            beginMessage = quantity > 1 ? `Encontrados ${quantity} contatos` : `Encontrado ${quantity} contato`;
+        }
+
+        return `${beginMessage} com os filtros especificados.`;
+    };
+
     const contacts = filterContacts();
 
     return (
-        <ContactCardsList>
-            {contacts.map(contact => (
-                <Contact
-                    key={contact.id}
-                    id={contact.id}
-                    name={contact.name}
-                    category={contact.category}
-                    email={contact.email}
-                    phone={contact.phone}
-                />
-            ))}
-        </ContactCardsList>
+        <>
+            <ContactsInfo>{showFilterResults(contacts.length)}</ContactsInfo>
+            <ContactCardsList>
+                {contacts.map(contact => (
+                    <Contact
+                        key={contact.id}
+                        id={contact.id}
+                        name={contact.name}
+                        category={contact.category}
+                        email={contact.email}
+                        phone={contact.phone}
+                    />
+                ))}
+            </ContactCardsList>
+        </>
     );
 };
 

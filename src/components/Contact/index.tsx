@@ -3,11 +3,13 @@ import { ActionButton, ActionButtonDanger } from '../../styles';
 import { Card, ContactItem, ContactName, CategoryTag, ContactInfos, ContactInfo, ActionBar } from './styles';
 import { remove } from '../../store/reducers/contacts';
 import ContactClass from '../../models/Contact';
+import { useNavigate } from 'react-router-dom';
 
 type ContactProps = ContactClass;
 
 const Contact = ({ id, name, category, email, phone }: ContactProps) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return (
         <ContactItem>
@@ -25,7 +27,7 @@ const Contact = ({ id, name, category, email, phone }: ContactProps) => {
                     </ContactInfo>
                 </ContactInfos>
                 <ActionBar>
-                    <ActionButton>Editar</ActionButton>
+                    <ActionButton onClick={() => navigate(`/edit/${id}`)}>Editar</ActionButton>
                     <ActionButtonDanger onClick={() => dispatch(remove(id))}>Remover</ActionButtonDanger>
                 </ActionBar>
             </Card>
