@@ -79,7 +79,9 @@ const ContactForm = ({ contactId }: Props) => {
                 </Options>
                 <Field value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="E-mail" />
                 <Field value={phone} onChange={e => setPhone(e.target.value)} type="tel" placeholder="Phone" />
-                <ActionButtonSave type="submit">Cadastrar</ActionButtonSave>
+                <ActionButtonSave type="submit">
+                    {location.pathname.includes('/new') ? 'Cadastrar' : 'Salvar'}
+                </ActionButtonSave>
                 {window.innerWidth <= 767 ? <ActionButtonDanger onClick={cancel}>Cancelar</ActionButtonDanger> : <></>}
             </Form>
         </MainContainer>
