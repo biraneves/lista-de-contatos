@@ -8,22 +8,25 @@ const ContactsList = () => {
     const { search, category } = useSelector((state: RootReducer) => state.filter);
 
     const filterContacts = () => {
-        let filteredContacts = items;
+        let filteredContacts = [...items];
+
+        filteredContacts = filteredContacts.sort((a, b) => {
+            const nameA = a.name.toLowerCase();
+            const nameB = b.name.toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
 
         if (search !== undefined) {
-            filteredContacts = filteredContacts.filter(
-                contact => contact.name.toLowerCase().search(search.toLowerCase()) >= 0
+            filteredContacts = filteredContacts.filter(contact =>
+                contact.name.toLowerCase().includes(search.toLowerCase())
             );
-
-            if (category !== 'todos') {
-                filteredContacts = filteredContacts.filter(contact => contact.category === category);
-                return filteredContacts;
-            }
-
-            return filteredContacts;
         }
 
-        return items;
+        if (category !== 'todos') {
+            filteredContacts = filteredContacts.filter(contact => contact.category === category);
+        }
+
+        return filteredContacts;
     };
 
     const showFilterResults = (quantity: number) => {
